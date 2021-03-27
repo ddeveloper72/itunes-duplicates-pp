@@ -85,3 +85,16 @@ def findCommonTracks(fileNames):
         trackNameSets.append(trackNames)
     # get the set of common tracks
     findCommonTracks = set.intersection(*trackNameSets)
+
+    # write connon tracks to file
+    if len(findCommonTracks) > 0:
+        f = open("common-tracks.txt", "w")
+        for val in findCommonTracks:
+            s = "%s\n" % val
+            f.write(s.encode("UTF-8"))
+        f.close()
+        print("%d common tracks found. "
+              "Track names written to common-tracks.txt"
+              % len(findCommonTracks))
+    else:
+        print("No common tracks!")
