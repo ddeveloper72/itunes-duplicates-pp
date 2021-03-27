@@ -4,12 +4,14 @@
 # Description: Finding duplicates in a sample iTunes palylist
 # Tutorial from: Parsing iTunes Playlists
 
+import plistlib
+
 
 def findDuplicates(fileName):
     print('Find duplicate tracks in %s...' % fileName)
 
     # read in the playlist
-    playlist = playlistLib.readPlaylist(fileName)
+    playlist = plistlib.readPlaylist(fileName)
 
     # get tracks from the tracks dictionary
     tracks = playlist['Tracks']
@@ -66,7 +68,7 @@ def findCommonTracks(fileNames):
         trackNames = set()
 
         # read in playlist
-        playlist = playlistLib.readPlaylist(fileName)
+        playlist = plistlib.readPlaylist(fileName)
 
         # get the tracks
         tracks = playlist['Tracks']
@@ -102,7 +104,7 @@ def findCommonTracks(fileNames):
 
 def plotStats(fileName):
     # read in playlist
-    playlist = playlistLib.readPlaylist(fileName)
+    playlist = plistlib.readPlaylist(fileName)
 
     # get the tracks from the playlist
     tracks = playlist['Tracks']
