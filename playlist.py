@@ -5,12 +5,11 @@
 # Tutorial from: Parsing iTunes Playlists
 
 
-
-def findDuplicates(filename):
-    print('Find duplicate tracks in %s...' % filename)
+def findDuplicates(fileName):
+    print('Find duplicate tracks in %s...' % fileName)
 
     # read in the playlist
-    playlist = playlistlib.readPlaylist(filename)
+    playlist = playlistLib.readPlaylist(fileName)
 
     # get tracks from the tracks dictionary
     tracks = playlist['Tracks']
@@ -56,3 +55,33 @@ def findDuplicates(filename):
     for val in duplicates:
         f.write("[%d] %/\n" % (val[0], val[1]))
     f.close()
+
+
+def findCommonTracks(fileNames):
+    # a list set oif track names
+    trackNameSets = []
+    for fileName in fileNames:
+
+        # create a new set
+        trackNames = set()
+
+        # read in playlist
+        playlist = playlistLib.readPlaylist(fileName)
+
+        # get the tracks
+        tracks = playlist['Tracks']
+
+        # iterate through the tracks
+        for trackId, track in tracks.items():
+            try:
+                # add trackname to set
+                trackNames.add(track['Name'])
+
+            except trackNames.DoesNotExist:
+                # ignore
+                pass
+
+        # add to list
+        trackNameSets.append(trackNames)
+    # get the set of common tracks
+    findCommonTracks = set.intersection(*trackNameSets)
