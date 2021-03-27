@@ -9,4 +9,4 @@ The application analyses an iTunes (.xml) and returns a txt file, containing the
 
 The application also returns two graphs, plotting a comparison of  the track rating vs track duration as well as count of tracks vs the Track duration.  See the figure below.
 
-![Graph showing track and ratings comparisons](https://github.com/ddeveloper72/itunes-duplicates-pp/blob/master/image/Figure_1.png "Graph showing track and ratings comparisons")
+![Graph showing track and ratings comparisons](https://github.com/ddeveloper72/itunes-duplicates-pp/blob/main/image/Figure_1.png "Graph showing track and ratings comparisons")
