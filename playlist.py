@@ -73,7 +73,7 @@ def findCommonTracks(fileNames):
         trackNames = set()
 
         # read in playlist
-        playlist = plistlib.readPlaylist(fileName)
+        playlist = plistlib.readPlist(fileName)
 
         # get the tracks
         tracks = playlist['Tracks']
@@ -109,7 +109,7 @@ def findCommonTracks(fileNames):
 
 def plotStats(fileName):
     # read in playlist
-    playlist = plistlib.readPlaylist(fileName)
+    playlist = plistlib.readPlist(fileName)
 
     # get the tracks from the playlist
     tracks = playlist['Tracks']
