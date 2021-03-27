@@ -141,4 +141,8 @@ def plotStats(fileName):
     pyplot.xlabel('Track Duration')
     pyplot.ylabel('Track Rating')
 
-
+    # plot histogram
+    pyplot.subplot(2, 1, 2)
+    pyplot.hist(x, bins=20)
+    pyplot.xlabel('Track Duration')
+    pyplot.ylabel('Count')
