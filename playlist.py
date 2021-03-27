@@ -146,3 +146,6 @@ def plotStats(fileName):
     pyplot.hist(x, bins=20)
     pyplot.xlabel('Track Duration')
     pyplot.ylabel('Count')
+
+    # show plot
+    pyplot.show()
