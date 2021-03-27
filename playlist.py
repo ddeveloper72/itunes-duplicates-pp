@@ -95,7 +95,7 @@ def findCommonTracks(fileNames):
 
     # write connon tracks to file
     if len(findCommonTracks) > 0:
-        f = open("common-tracks.txt", "w")
+        f = open("common-tracks.txt", "wb")
         for val in findCommonTracks:
             s = "%s\n" % val
             f.write(s.encode("UTF-8"))
