@@ -98,3 +98,29 @@ def findCommonTracks(fileNames):
               % len(findCommonTracks))
     else:
         print("No common tracks!")
+
+
+def plotStats(fileName):
+    # read in playlist
+    playlist = playlistLib.readPlaylist(fileName)
+
+    # get the tracks from the playlist
+    tracks = playlist['Tracks']
+
+    # create a list of song ratings and track durations
+    ratings = []
+    durations = []
+
+    # iterate through the tracks
+    for trackId, track in tracks.items():
+        try:
+            ratings.append(track['Album Rating'])
+            durations.append(track['Total Time'])
+
+        except ratings.DoesNotExist | durations.DoesNotExist:
+            # ignore
+            pass
+    # ensure valid data was collected
+    if ratings == [] or durations == []:
+        print("No valid Album Rating/Total Time data in %s." % fileName)
+        return
