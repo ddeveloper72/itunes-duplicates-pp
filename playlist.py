@@ -4,6 +4,9 @@
 # Description: Finding duplicates in a sample iTunes palylist
 # Tutorial from: Parsing iTunes Playlists
 
+import re
+import argparse
+import sys
 import plistlib
 import numpy as np
 from matplotlib import pyplot
@@ -149,3 +152,40 @@ def plotStats(fileName):
 
     # show plot
     pyplot.show()
+
+
+def main():
+    # crate a parser
+    descStr = """
+    This program analyzes the (.xml) playlist files exported form iTunes
+    """
+    parser = argparse.ArgumentParser(description=descStr)
+
+    # add mutually exclusive group of arguments
+    group = parser.add_mutually_exclusive_group()
+
+    # add expected arguments
+    group.add_argument('--common', nargs='*', dest='playListFiles', required=False)
+    group.add_argument('--stats', dest='playListFile', required=False)
+    group.add_argument('--dup', dest='playListFileD', required=False)
+
+    # parse args
+    args = parser.parse_args()
+
+    if args.playlistFiles:
+
+        # find common tracks
+        findCommonTracks(args.playlistFiles)
+
+    elif args.playlistFile:
+
+        # plot stats
+        plotStats(args.playListFile)
+
+    elif args.playlistfileD:
+
+        # find duplicate tracks
+        findDuplicates(args.playListFileD)
+
+    else:
+        print("These are not the tracks you are looking for")
