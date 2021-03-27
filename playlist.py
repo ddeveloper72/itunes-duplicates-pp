@@ -165,17 +165,18 @@ def main():
     group = parser.add_mutually_exclusive_group()
 
     # add expected arguments
-    group.add_argument('--common', nargs='*', dest='playListFiles', required=False)
+    group.add_argument('--common', nargs='*',
+                       dest='playListFiles', required=False)
     group.add_argument('--stats', dest='playListFile', required=False)
     group.add_argument('--dup', dest='playListFileD', required=False)
 
     # parse args
     args = parser.parse_args()
 
-    if args.playlistFiles:
+    if args.playListFiles:
 
         # find common tracks
-        findCommonTracks(args.playlistFiles)
+        findCommonTracks(args.playListFiles)
 
     elif args.playlistFile:
 
