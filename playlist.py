@@ -178,12 +178,12 @@ def main():
         # find common tracks
         findCommonTracks(args.playListFiles)
 
-    elif args.playlistFile:
+    elif args.playListFile:
 
         # plot stats
         plotStats(args.playListFile)
 
-    elif args.playlistfileD:
+    elif args.playListfileD:
 
         # find duplicate tracks
         findDuplicates(args.playListFileD)
