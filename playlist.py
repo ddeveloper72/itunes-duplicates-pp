@@ -5,6 +5,8 @@
 # Tutorial from: Parsing iTunes Playlists
 
 import plistlib
+import numpy as np
+from matplotlib import pyplot
 
 
 def findDuplicates(fileName):
@@ -126,3 +128,17 @@ def plotStats(fileName):
     if ratings == [] or durations == []:
         print("No valid Album Rating/Total Time data in %s." % fileName)
         return
+
+    # scatter plot
+    x = np.array(durations, np.int32)
+
+    # convert to minutes
+    x = x/60000.0
+    y = np.array(ratings, np.int32)
+    pyplot.subplot(2, 1, 1)
+    pyplot(x, y, 'o')
+    pyplot.axis([0, 1.05*np.max(x), -1, 110])
+    pyplot.xlabel('Track Duration')
+    pyplot.ylabel('Track Rating')
+
+
